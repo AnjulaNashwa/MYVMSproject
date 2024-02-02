@@ -1,0 +1,17 @@
+
+{% extends 'usertemp/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<div class="card bg-danger mx-auto mt-5
+" style="width: 500px; height:300px;"  >
+<form method="post" action="{% url 'profileupdate' new.id %}">
+    {% csrf_token %}
+    {{ updateform|crispy }}
+    <button type="submit">update</button>
+</form>
+
+</div>
+{% endblock %}
+
+

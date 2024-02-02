@@ -1,0 +1,61 @@
+
+
+{% extends 'usertemp/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="card mx-auto mt-5
+" style="width: 1000px; height:600px; border:1px solid red"  >
+
+  {% for message in messages %}
+  <div class="alert" role="alert">
+    {{message}}
+  </div>
+{% endfor %}
+<table class="table">
+  <tbody>
+  <tr class="table-primary">
+    <th>Hospital</th>
+    <th>Date</th>
+    <th>childname</th>
+    <th>childage</th>
+    <th>vaccinename</th>
+    <th>Starttime</th>
+    <th>Endtime</th>
+  </tr>
+  {% for i in new %}
+    <tr>
+      <td>{{i.schedule.hospital}}</td>
+      <td>{{i.schedule.date}}</td>
+      <td>{{i.user.childname}}</td>
+      <td>{{i.user.childage}}</td>
+      <td>{{i.vaccinename}}</td>
+      <td>{{i.schedule.starttime}}</td>
+      <td>{{i.schedule.endtime}}</td>
+
+      <td>
+        {% if i.status == 0%}
+       <button type="button" class="btn btn-success">Approval pending</button>
+      {% elif i.status == 1%}
+        <button type="button" class="btn btn-success">approved</button>
+        {% else %}
+        <button type="button" class="btn btn-danger">Reject</button>
+        {% endif %}
+      </td>
+
+
+
+
+
+    </tr>
+  {% empty %}
+  <tr>
+    <td colspan="7"><h3>No Results Found</h3></td>
+  </tr>
+
+  {% endfor %}
+  </tbody>
+</table>
+</div>
+
+
+{% endblock %}

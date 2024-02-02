@@ -1,0 +1,24 @@
+
+
+
+{% extends 'admintemp/test.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="card mx-auto mt-5
+" style="width: 800px; height:600px; border:1px solid red"  >
+<table class="table">
+  <tbody>
+  <tr class="table-primary">
+    <th>name</th>
+    <th>vaccinename</th>
+  </tr>
+  {% for i in new %}
+  <tr>
+      <td>{{i.name}}</td>
+      <td>{{i.vaccinename}}</td>
+  </tr>
+  {% endfor %}
+  </tbody>
+</table>
+</div>
+{% endblock %}

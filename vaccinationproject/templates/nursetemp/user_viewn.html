@@ -1,0 +1,58 @@
+
+
+{% extends 'nursetemp/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="col-12"><h1>USERVIEW</h1></div>
+<div class="card mx-auto mt-5
+" style="width: 800px; height:600px; border:1px solid red"  >
+  <div class="row">
+  <div class="col-lg-6 "></div>
+  <div class="col-lg-6">
+    <form method="get" class="form-inline" style="float:right;">
+      <div class="input-group">
+        {{ userfilter.form }}
+        <div class="input-group-append">
+          <button class="btn btn-primary" type="submit">Search</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  </div>
+<table class="table">
+  <tbody>
+  <tr class="table-primary">
+    <th>name</th>
+    <th>address</th>
+    <th>childname</th>
+    <th>childage</th>
+    <th>gender</th>
+  </tr>
+  {% for i in user %}
+  <tr>
+    <td>{{i.username}}</td>
+      <td>{{i.address}}</td>
+      <td>{{i.childname}}</td>
+      <td>{{i.childage}}</td>
+      <td>{{i.gender}}</td>
+<!--  <td><a href="{% url 'user_update' i.id %}"><button type="submit" class="btn btn-primary">edit</button></a></td>-->
+<!--    <td>-->
+<!--      <form action="{% url 'user_delete' i.id %}" method="post">-->
+<!--        {% csrf_token %}-->
+<!--        <button type="submit" class="btn btn-primary">delete</button>-->
+<!--      </form>-->
+<!--      </td>-->
+
+
+
+  </tr>
+    {% empty %}
+  <tr>
+    <td colspan="7"><h3>No Results Found</h3></td>
+  </tr>
+
+  {% endfor %}
+  </tbody>
+</table>
+</div>
+{% endblock %}

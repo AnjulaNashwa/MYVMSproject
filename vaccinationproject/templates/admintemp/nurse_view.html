@@ -1,0 +1,59 @@
+
+
+{% extends 'admintemp/test.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="col-12" ><h1>NURSEVIEW</h1></div>
+<div class="card mx-auto mt-5
+" style="width: 1000px; height:600px; border:1px solid black; border-collapse:collapse;"  >
+  <div class="row">
+  <div class="col-lg-6 "></div>
+  <div class="col-lg-6">
+    <form method="get" class="form-inline" style="float:right;">
+      <div class="input-group">
+        {{ nursefilter.form }}
+        <div class="input-group-append">
+          <button class="btn btn-primary" type="submit">Search</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  </div>
+
+<table class="table" style="border:1px solid black; border-collapse:collapse;">
+  <tbody>
+
+  <tr class="table-primary" style="border:1px solid black; border-collapse:collapse;">
+
+    <th>name</th>
+    <th>Address</th>
+
+    <th>E-mail</th>
+    <th>Hospital_name</th>
+    <th></th>
+    <th></th>
+  </tr>
+  {% for i in nurse %}
+  <tr><td>{{i.username}}</td>
+          <td>{{i.address}}</td>
+          <td>{{i.email}}</td>
+          <td>{{i.hospital}}</td>
+  <td><a href="{% url 'nurse_update' i.id %}"><button type="submit" class="btn btn-success">edit</button></a></td>
+    <td><a href="{% url 'nurse_delete' i.id %}"><button type="submit" class="btn btn-danger">delete</button></a></td>
+
+
+
+  </tr>
+    {% empty %}
+  <tr>
+    <td colspan="7"><h3>No Results Found</h3></td>
+  </tr>
+
+
+
+
+  {% endfor %}
+  </tbody>
+</table>
+</div>
+{% endblock %}

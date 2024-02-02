@@ -1,0 +1,29 @@
+{% extends 'usertemp/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="card mx-auto mt-5
+" style="width: 800px; height:600px; border:1px solid red"  >
+  <div class="card-body">
+    <form method="post">
+        {% csrf_token %}
+        <label>Date</label>
+        <input required class="form-control" readonly value="{{schedule.date }}">
+        <label>Hospital</label>
+        <input required class="form-control" readonly value="{{schedule.hospital }}">
+        <label>vaccinename</label>
+        <input required class="form-control" readonly value="{{schedule.vaccinename}}">
+        <label>starttime</label>
+        <input required class="form-control" readonly value="{{schedule.starttime}}">
+        <label>endtime</label>
+        <input required class="form-control" readonly value="{{schedule.endtime}}">
+        <br>
+        <button type="submit">Submit</button>
+
+    </form>
+  </div>
+</div>
+
+
+{% endblock %}
+
+

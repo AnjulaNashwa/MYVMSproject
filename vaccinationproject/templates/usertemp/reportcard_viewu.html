@@ -1,0 +1,34 @@
+
+
+{% extends 'usertemp/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="card mx-auto mt-5
+" style="width: 800px; height:600px; border:1px solid red"  >
+<table class="table">
+  <tbody>
+  <tr class="table-primary">
+    <th>vaccinename</th>
+    <th>vaccinetype</th>
+    <th>description</th>
+  </tr>
+  {% for i in new %}
+  <tr>
+      <td>{{i.vaccinename}}</td>
+      <td>{{i.vaccinetype}}</td>
+  <td>{{i.description}}</td>
+  <td><a href="{% url 'reportcard_update' i.id %}"><button>edit</button></a></td>
+    <td>      <form action="{% url 'reportcard_delete' i.id %}" method="post">
+        {% csrf_token %}
+        <button type="submit">delete</button>
+      </form>
+</td>
+
+
+
+  </tr>
+  {% endfor %}
+  </tbody>
+</table>
+</div>
+{% endblock %}
